@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - include:
+      file: classpath:/db/changelog/changes/001-user-changelog.sql
+  - include:
+      file: classpath:/db/changelog/changes/002-driver-passenger-ride-changelog.sql
+  - include:
+      file: classpath:/db/changelog/changes/003-ride-passenger-driver-common-changelog.sql
+  - include:
+      file: classpath:/db/changelog/changes/004-driver-changelog.sql
+  - include:
+      file: classpath:/db/changelog/changes/005-payment-changelog.sql
+  - include:
+      file: classpath:/db/changelog/changes/006-exchange-rate-changelog.sql
+

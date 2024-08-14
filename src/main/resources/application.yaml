@@ -1,0 +1,140 @@
+# ===============================
+# SERVER CONFIGS
+# ===============================
+
+server:
+  error:
+    include-message: never
+    include-binding-errors: never
+  port: 2031
+
+
+  # ===============================
+  # SPRING CONFIGS
+  # ===============================
+
+
+spring:
+  task:
+    scheduling:
+      pool:
+        size: 10
+  main:
+    allow-circular-references: true
+  application:
+    name: Parkway API
+  liquibase:
+    enabled: true
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        hbm2ddl:
+          auto: none
+        show_sql: false
+    open-in-view: false
+    hibernate:
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+  datasource:
+    tomcat:
+      test-while-idle: true
+    url: jdbc:postgresql://localhost:5432/park_way
+    username: park_way
+    password: '@parkway@shelt@dream@2023'
+  docker:
+    compose:
+      enabled: false
+      file: compose.yml
+  mail:
+    host: us2.smtp.mailhostbox.com
+    port: 587
+    username: tests@dreamhub.tech
+    password: EOMUApD(A1
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+
+
+    # ==========================================
+    # SPRING DOC
+    # ==========================================
+
+springdoc:
+  show-actuator: true
+
+  # ==========================================
+  # APPLICATION LOGGING
+  # ==========================================
+logbook:
+  format.style: http
+  filter.enabled: false
+
+  # ==========================================
+  # APPLICATION LOGGING
+  # ==========================================
+
+logging:
+  level:
+    root: INFO
+    org.zalando.logbook: TRACE
+  #    org.springframework.security: DEBUG
+  #    org.springframework.web: INFO
+  #    org.springframework.web.HttpLogging: DEBUG
+
+  # ===============================
+  # = INFO CONFIGS
+  # ===============================
+
+info:
+  media:
+    dir: media
+  app:
+    name: Parkway API
+    description: Parkway API
+    version: 1.0
+    basePackage: zw.co.dreamhub
+  contact:
+    name: Marlvin Chihota
+    url: https://marlvinzw.me
+    email: hello@marlvinzw.me
+  url:
+    unSecured: /api/v1/public
+    secured: /api/v1
+  security:
+    password:
+      salt: zw.co.dreamhub
+      saltChars: ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890
+    jwt:
+      # base64 encoded https://www.base64encode.org/
+      secret: encuY28uZHJlYW1odWIucGFya3dheS4yMDIzLnJpZGUucG9vbGluZy5ib29raW5nLnJlYWx0aW1lLmZhc3Quc2VjdXJlLmNvbnZpbmllbnQuYWxsLmluLm9uZS5yZWxpYWJsZQ==
+      jwtExpirationMs: 64800000
+      jwtRefreshExpirationMs: 2592000000
+
+
+  # ===============================
+  # = ADMIN
+  # ===============================
+admin-details:
+  username: hello@marlvinzw.me
+  password: marlvin123
+  phoneNumber: 263781939619
+
+
+  # ===============================
+  # = PAYNOW
+  # ===============================
+
+paynow:
+  resultUrl: https://relaxing-sawfish-poorly.ngrok-free.app/api/v1/subscription/payment/paynow
+  returnUrl: https://relaxing-sawfish-poorly.ngrok-free.app/api/v1/subscription/payment/paynow
+  integration:
+    id: 7487
+    key: 09811ac7-2e28-4ff2-b726-f3966e6062fe

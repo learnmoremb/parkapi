@@ -1,0 +1,21 @@
+package zw.co.dreamhub.domain.mappers.driver;
+
+import org.mapstruct.*;
+import zw.co.dreamhub.domain.dto.request.driver.InsuranceRequest;
+import zw.co.dreamhub.domain.dto.request.driver.VehicleRequest;
+import zw.co.dreamhub.domain.models.driver.Insurance;
+import zw.co.dreamhub.domain.models.driver.Vehicle;
+
+/**
+ * @author sheltons
+ * Email sheltshamu@gmail.com
+ * Created on 2023/12/14
+ */
+
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
+public interface InsuranceMapper {
+    Insurance toEntity(InsuranceRequest insuranceRequest);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    Insurance partialUpdate(InsuranceRequest insuranceRequest, @MappingTarget Insurance insurance);
+}
